@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/*
+  DeliverSME Lagos — design tokens (Stage 11)
+  Brand palette retained exactly as approved. Strong/danger variants added
+  for WCAG AA compliance — see Stage 11's contrast audit. Never hardcode
+  these hex values elsewhere; always reference the variable.
+*/
+:root {
+  /* Brand */
+  --color-primary: #1e3a5f;
+  --color-accent: #10b981;
+  --color-accent-strong: #047857; /* white-text-safe emerald, ~4.6:1 */
+  --color-warning: #f59e0b;
+  --color-warning-strong: #92400e; /* white-text-safe amber, ~5.1:1 */
+  --color-danger: #dc2626; /* added Stage 11 — failed deliveries, destructive actions only */
+
+  /* Surfaces */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+
+  /* Text */
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Spacing (4px base unit) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --radius-pill: 999px;
+
+  /* Shadows — soft, per Stage 11 */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Tailwind v4 theme mapping — exposes tokens as utility classes (bg-primary, text-danger, etc.) */
+@theme {
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-warning: var(--color-warning);
+  --color-warning-strong: var(--color-warning-strong);
+  --color-danger: var(--color-danger);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
