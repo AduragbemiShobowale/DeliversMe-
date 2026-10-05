@@ -88,7 +88,7 @@ export default function ContactPage() {
                 <div><p className="font-semibold text-navy-900">Email</p><a href={`mailto:${site.supportEmail}`} className="text-sm text-slate-600 hover:text-brand-600">{site.supportEmail}</a></div></li>
             )}
             <li className="flex gap-4"><span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-brand-600"><MapPin className="h-5 w-5" /></span>
-              <div><p className="font-semibold text-navy-900">Our Location</p><p className="text-sm text-slate-600">{site.location}</p><p className="text-sm text-slate-600">Serving businesses across Lagos</p></div></li>
+              <div><p className="font-semibold text-navy-900">Our Location</p><p className="text-sm text-slate-600">{site.address}</p><p className="text-sm text-slate-600">{site.location}</p></div></li>
             {site.social.length > 0 && (
               <li className="flex gap-4"><span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-brand-600"><Send className="h-5 w-5" /></span>
                 <div><p className="font-semibold text-navy-900">Follow Us</p><SocialLinks className="mt-2" /></div></li>
@@ -102,11 +102,12 @@ export default function ContactPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">Our location</p>
           <h2 className="mt-2 text-3xl font-bold text-navy-900">Find Us Here</h2>
           <p className="mt-3 text-slate-600">We are based in Lagos, Nigeria, and proudly support SMEs across the state.</p>
+          <address className="mt-4 flex gap-3 not-italic text-sm text-slate-700"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" /><span>{site.address}<br />{site.location}</span></address>
           <Button variant="outline-brand" className="mt-5" href={`https://www.openstreetmap.org/?mlat=${LAGOS_CENTER[0]}&mlon=${LAGOS_CENTER[1]}#map=12/${LAGOS_CENTER[0]}/${LAGOS_CENTER[1]}`} target="_blank" rel="noopener noreferrer">Get Directions <ArrowRight className="h-4 w-4" /></Button>
         </div>
         <MapContainer center={LAGOS_CENTER} zoom={11} scrollWheelZoom={false} className="h-72 w-full">
           <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <Marker position={LAGOS_CENTER} icon={pin}><Tooltip permanent direction="right" offset={[12, 0]}><strong>DeliverSME</strong><br />Lagos, Nigeria</Tooltip></Marker>
+          <Marker position={LAGOS_CENTER} icon={pin}><Tooltip permanent direction="right" offset={[12, 0]}><strong>DeliverSME</strong><br />{site.address}<br />{site.location}</Tooltip></Marker>
         </MapContainer>
       </section>
     </>

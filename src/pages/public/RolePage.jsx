@@ -17,6 +17,7 @@ const CONTENT = {
       'Analytics: total deliveries, success rate, average delivery time and daily trend',
     ],
     cta: { label: 'Register your business', to: '/register?type=sme_owner' },
+    hero: { title: 'Deliveries That Keep Up', accent: 'With Your Business.', image: '/images/about-hero.jpg', alt: 'An SME owner using a tablet among packed orders' },
   },
   riders: {
     heading: 'Get delivery jobs and complete them with confidence',
@@ -30,6 +31,7 @@ const CONTENT = {
       'Full delivery history. Accounts are verified by an administrator before receiving jobs',
     ],
     cta: { label: 'Sign up as a rider', to: '/register?type=rider' },
+    hero: { title: 'Ride With DeliverSME.', accent: 'Earn on Your Schedule.', image: '/images/hero-rider.jpg', alt: 'A DeliverSME rider with a branded delivery box' },
   },
   customers: {
     heading: 'Request and track deliveries from many businesses',
@@ -42,6 +44,7 @@ const CONTENT = {
       'Cancel before a rider accepts, and rate completed deliveries',
     ],
     cta: { label: 'Create a customer account', to: '/register?type=customer' },
+    hero: { title: 'Every Delivery,', accent: 'Right in Your Pocket.' },
   },
   administrators: {
     heading: 'Oversee the platform, users and quality',
@@ -55,6 +58,7 @@ const CONTENT = {
       'Handle messages sent through the Contact page',
     ],
     cta: { label: 'Contact us about administration', to: '/contact' },
+    hero: { title: 'Keep the Platform', accent: 'Safe and Trusted.' },
   },
 };
 
@@ -65,22 +69,42 @@ export default function RolePage() {
   if (!c || !card) return <NotFoundPage />;
   const Icon = card.icon;
   return (
-    <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
-      <span className={`grid h-12 w-12 place-items-center rounded-xl ${card.tone}`}><Icon className="h-6 w-6" aria-hidden="true" /></span>
-      <p className="mt-5 text-sm font-semibold uppercase tracking-wide text-brand-600">{card.title}</p>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">{c.heading}</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-600">{c.intro}</p>
-      <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-        {c.points.map((pt) => (
-          <li key={pt} className="flex gap-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 shadow-card">
-            <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />{pt}
-          </li>
-        ))}
-      </ul>
-      <div className="mt-10 flex flex-wrap gap-3">
-        <Button size="lg" to={c.cta.to}>{c.cta.label} <ArrowRight className="h-4 w-4" /></Button>
-        <Button size="lg" variant="outline" to="/how-it-works">How it works</Button>
-      </div>
-    </section>
+    <>
+      <section className="bg-slate-50">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div>
+            <span className={`grid h-12 w-12 place-items-center rounded-xl ${card.tone}`}><Icon className="h-6 w-6" aria-hidden="true" /></span>
+            <p className="mt-5 text-sm font-semibold uppercase tracking-wide text-brand-600">{card.title}</p>
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight text-navy-900 sm:text-5xl">{c.hero.title}<br /><span className="text-brand-600">{c.hero.accent}</span></h1>
+            <p className="mt-5 max-w-lg text-lg text-slate-600">{c.intro}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button size="lg" to={c.cta.to}>{c.cta.label} <ArrowRight className="h-4 w-4" /></Button>
+              <Button size="lg" variant="outline" to="/how-it-works">How it works</Button>
+            </div>
+          </div>
+          {c.hero.image ? (
+            <img src={c.hero.image} alt={c.hero.alt} className="h-[360px] w-full rounded-3xl object-cover sm:h-[420px]" />
+          ) : (
+            <div className={`hidden h-[360px] place-items-center rounded-3xl lg:grid ${card.card}`} aria-hidden="true">
+              <span className={`grid h-40 w-40 place-items-center rounded-full ${card.tone}`}><Icon className="h-20 w-20" /></span>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold tracking-tight text-navy-900">{c.heading}</h2>
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          {c.points.map((pt) => (
+            <li key={pt} className="flex gap-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 shadow-card">
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />{pt}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-10">
+          <Button size="lg" to={c.cta.to}>{c.cta.label} <ArrowRight className="h-4 w-4" /></Button>
+        </div>
+      </section>
+    </>
   );
 }

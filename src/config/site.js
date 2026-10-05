@@ -3,9 +3,11 @@ const env = import.meta.env;
 export const site = {
   name: 'DeliverSME',
   tagline: 'Delivering Possibilities',
-  supportPhone: env.VITE_SUPPORT_PHONE || '',
-  supportEmail: env.VITE_SUPPORT_EMAIL || '',
+  // PLACEHOLDER contact details shown until the real ones are set via env. Replace before launch.
+  supportPhone: env.VITE_SUPPORT_PHONE || '+234 800 000 0000',
+  supportEmail: env.VITE_SUPPORT_EMAIL || 'support@deliversme.ng',
   hours: 'Mon – Fri, 9:00 AM – 5:00 PM (WAT)',
+  address: env.VITE_SUPPORT_ADDRESS || '15 Herbert Macaulay Way, Yaba',
   location: 'Lagos, Nigeria',
   social: [
     { key: 'linkedin', label: 'LinkedIn', href: env.VITE_SOCIAL_LINKEDIN },
